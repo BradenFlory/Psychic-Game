@@ -5,12 +5,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Rock, Paper, Scissors</title>
+        <title>Psychic Game</title>
     </head>
 
     <body>
         <div id="game">
-            <p>Can you guess what letter I am thinking of?</p>
+            <p id="directions-text">Can you guess what letter I am thinking of?</p>
+            <p id="userchoice-text"></p>
+            <p id="computerchoice-text"></p>
+            <p id="wins-text"></p>
+            <p id="losses-text"></p>
         </div>
         <!-- User to type a letter-making a choice
         The computer also needs to choose a letter-making
@@ -22,8 +26,17 @@
             var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
             var wins = 0;
             var losses = 0;
-            var guessesleft = 9;
-            var guessessofar = 0;
+            var guessesLeft = 9;
+            var guessesSofar = 0;
+
+            var directionsText = document.getElementById("directions-text");
+            var userchoiceText = document.getElementById("userchoice-text");
+            var computerChoiceText = document.getElementById("computerchoice-text");
+            var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+
+
+
             document.onkeyup = function () {
                 var userguess = String.fromCharCode(event.keyCode).
                     toLowerCase();
@@ -32,16 +45,23 @@
                 var computerGuess = options[Math.floor(Math.random() * options.length)];
 
 
-                if (userguess === computerGuess
+                if (userguess === computerGuess) {
+                    wins++;
+
+                }
+                else {
+                    losses++;
+                }
 
 
-                var html = "<p>Can you guess what letter I am thinking of?</p>" +
-                        "<p>wins: " + wins + "</p>" +
-                        "<p>losses: " + losses + "</p>" +
-                        "<p>Guesses you have left: " + guessesleft + "</p>" +
-                        "<p>What you have guessed so far: " + guessessofar + "</p>";
-                document.querySelector('#game').innerHTML = html;
-            }
+                computerChoiceText.textContent = "The computer chose: " + computerGuess;
+                userchoiceText.textContent = "You chose: " + userguess;
+                winsText.textContent = "Wins: " + wins;
+                lossesText.textContent = "Losses: " + losses;
+            };
+
+
+
         </script>
 
     </body>
