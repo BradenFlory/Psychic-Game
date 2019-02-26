@@ -11,59 +11,20 @@
     <body>
         <div id="game">
             <p id="directions-text">Can you guess what letter I am thinking of?</p>
-            <p id="userchoice-text"></p>
-            <p id="computerchoice-text"></p>
-            <p id="wins-text"></p>
-            <p id="losses-text"></p>
+            <p id="wins-text">Wins:</p>
+            <p id="losses-text">Losses:</p>
+            <p id="guessesleft-text">Guesses left: </p>
+            <p id="computerchoice-text">The computer chose:</p>
+            <p id="userchoice-text">Your guesses so far:</p>
         </div>
+
         <!-- User to type a letter-making a choice
         The computer also needs to choose a letter-making
         Capture those choices
         Compare choices
         Produce results in win, loss or tie -->
-        <script type="text/javascript">
 
-            var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-            var wins = 0;
-            var losses = 0;
-            var guessesLeft = 9;
-            var guessesSofar = 0;
-
-            var directionsText = document.getElementById("directions-text");
-            var userchoiceText = document.getElementById("userchoice-text");
-            var computerChoiceText = document.getElementById("computerchoice-text");
-            var winsText = document.getElementById("wins-text");
-            var lossesText = document.getElementById("losses-text");
-
-
-
-            document.onkeyup = function () {
-                var userguess = String.fromCharCode(event.keyCode).
-                    toLowerCase();
-
-
-                var computerGuess = options[Math.floor(Math.random() * options.length)];
-
-
-                if (userguess === computerGuess) {
-                    wins++;
-
-                }
-                else {
-                    losses++;
-                }
-
-
-                computerChoiceText.textContent = "The computer chose: " + computerGuess;
-                userchoiceText.textContent = "You chose: " + userguess;
-                winsText.textContent = "Wins: " + wins;
-                lossesText.textContent = "Losses: " + losses;
-            };
-
-
-
-        </script>
-
+        <script src="./assets/javascript/game.js"></script>
     </body>
 
 </html>
